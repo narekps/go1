@@ -19,33 +19,20 @@ func main() {
 	fmt.Print("Enter the third number: ")
 	fmt.Scanf("%d\n", &c)
 
-	if a <= b && b <= c {
-		fmt.Printf("Result: %d%d%d\n", a, b, c)
-		return
+	if a > b {
+		changeVals(&a, &b)
 	}
+	if b > c {
+		changeVals(&b, &c)
+	}
+	if a > b {
+		changeVals(&a, &b)
+	}
+	fmt.Printf("Result: %d%d%d\n", a, b, c)
+}
 
-	if a <= c && c <= b {
-		fmt.Printf("Result: %d%d%d\n", a, c, b)
-		return
-	}
-
-	if b <= a && a <= c {
-		fmt.Printf("Result: %d%d%d\n", b, a, c)
-		return
-	}
-
-	if b <= c && c <= a {
-		fmt.Printf("Result: %d%d%d\n", b, c, a)
-		return
-	}
-
-	if c <= a && a <= b {
-		fmt.Printf("Result: %d%d%d\n", c, a, b)
-		return
-	}
-
-	if c <= b && b <= a {
-		fmt.Printf("Result: %d%d%d\n", c, b, a)
-		return
-	}
+func changeVals(a *int, b *int) {
+	*a = *a + *b
+	*b = *a - *b
+	*a = *a - *b
 }
