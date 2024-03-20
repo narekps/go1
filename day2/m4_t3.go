@@ -66,13 +66,13 @@ func calcSquare(x1, x2, x3, y1, y2, y3 int) float64 {
 
 func checkTriangle(line1, line2, line3 float64) bool {
 	if line1 > line2 && line1 > line3 {
-		return line1*line1 == line2*line2+line3*line3
+		return math.Floor(line1*line1) == math.Floor(line2*line2)+math.Floor(line3*line3) || math.Ceil(line1*line1) == math.Ceil(line2*line2)+math.Ceil(line3*line3)
 	}
 	if line2 > line1 && line2 > line3 {
-		return line2*line2 == line1*line1+line3*line3
+		return math.Floor(line2*line2) == math.Floor(line1*line1)+math.Floor(line3*line3) || math.Ceil(line2*line2) == math.Ceil(line1*line1)+math.Ceil(line3*line3)
 	}
 	if line3 > line1 && line3 > line2 {
-		return line3*line3 == line1*line1+line2*line2
+		return math.Floor(line3*line3) == math.Floor(line1*line1)+math.Floor(line2*line2) || math.Ceil(line3*line3) == math.Ceil(line1*line1)+math.Ceil(line2*line2)
 	}
 
 	return false
