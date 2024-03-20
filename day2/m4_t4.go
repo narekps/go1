@@ -55,16 +55,11 @@ func printBoard(boardSize int) {
 	for i := 0; i < boardSize; i++ {
 		for j := 0; j < boardSize; j++ {
 			fmt.Printf("%d ", printChar)
-			changePrintChar()
+			printChar = printChar ^ 1
+		}
+		if boardSize%2 == 0 {
+			printChar = printChar ^ 1
 		}
 		fmt.Print("\n")
-	}
-}
-
-func changePrintChar() {
-	if printChar == 0 {
-		printChar = 1
-	} else {
-		printChar = 0
 	}
 }
