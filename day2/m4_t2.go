@@ -25,9 +25,18 @@ import (
 func main() {
 	input := bufio.NewScanner(os.Stdin)
 	for {
+		fmt.Print("Введите количество бутылок от 0 до 200: ")
 		if input.Scan() {
 			inputString := input.Text()
-			num, _ := strconv.Atoi(inputString)
+			num, err := strconv.Atoi(inputString)
+			if err != nil {
+				fmt.Printf("Ошибка: %s\n", err)
+				continue
+			}
+			if num < 0 || num > 200 {
+				fmt.Printf("Ошибка: %s\n", "Введите учисло от 0 до 200")
+				continue
+			}
 			str := calcCount(num)
 			fmt.Printf("%d %s\n", num, str)
 		}
